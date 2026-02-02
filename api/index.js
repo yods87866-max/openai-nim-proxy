@@ -20,6 +20,15 @@ const SHOW_REASONING = false; // Set to true to show reasoning with <think> tags
 // 🔥 THINKING MODE TOGGLE - Enables thinking for specific models that support it
 const ENABLE_THINKING_MODE = false; // Set to true to enable chat_template_kwargs thinking parameter
 
+// Root endpoint for testing
+app.get('/', (req, res) => {
+  res.json({ 
+    status: 'ok',
+    message: 'OpenAI to NVIDIA NIM Proxy',
+    endpoints: ['/health', '/v1/models', '/v1/chat/completions']
+  });
+});
+
 // Model mapping (adjust based on available NIM models)
 const MODEL_MAPPING = {
   'gpt-3.5-turbo': 'nvidia/llama-3.1-nemotron-ultra-253b-v1',
